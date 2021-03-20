@@ -89,30 +89,20 @@ public class UserDao {
 
 	public boolean addUser(User user) {
 
-		 System.out.println(user.getUserId());
-		 System.out.println(user.getUserName());
-		 System.out.println(user.getUserEmail());
-		 System.out.println(user.getUserPassword());
-		 System.out.println(user.getUserContact());
 		
+		/*
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 		
 		Query query = session.createSQLQuery(
-				
-
        "insert into User(userName,userEmail,userPassword,userContact) values(:name,:Email :password,:contact) ");
-		
-		
-		
+	
 		query.setParameter("name", user.getUserName());
 		query.setParameter("Email", user.getUserEmail());
 		query.setParameter("password", user.getUserPassword());
 		query.setParameter("contact", user.getUserContact());
 		query.setParameter("id", user.getUserId());
-		
-		
-		
+	
 		int i = query.executeUpdate();//
 		tx.commit();
 		if (i > 0) {
@@ -120,11 +110,26 @@ public class UserDao {
 		}else{
 		
 			return false;
-		}
-
-	
-
-		
+		}	
 	}
+	*/
+	
+	boolean result=false;
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+		Criteria criteria = session.createCriteria(User.class);
+		
+		
+		User user1 = new User();
+		user1.setUserName(user.getUserName());
+	   user1.setUserEmail(user.getUserEmail());
+	   user1.setUserPassword(user.getUserPassword());
+	   user1.setUserContact(user.getUserContact());
+		session.save(user);
+		tx.commit();
+		System.out.println("Data inserted Successfully..!!");
+
+		return true;
+	
 
 }
