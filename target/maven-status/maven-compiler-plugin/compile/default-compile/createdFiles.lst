@@ -1,0 +1,5 @@
+com\jbk\configuration\HibernateConfig.class
+com\jbk\configuration\ApplicationInitializer.class
+com\jbk\configuration\WebConfig.class
+com\jbk\controller\UserController.class
+com\jbk\pojo\User.class
